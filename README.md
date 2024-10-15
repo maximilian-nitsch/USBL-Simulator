@@ -1,8 +1,6 @@
 # C++/ROS 2 Ultra-Short Baseline (USBL) Simulator
 
 [![License](https://img.shields.io/badge/license-BSD--3-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
-[![Build Status](https://gitlab.informatik.uni-bremen.de/%{project_path}/badges/%{default_branch}/pipeline.svg)](https://gitlab.informatik.uni-bremen.de/triple/gnc/sensors/usbl-simulator/-/commits/main)
-[![Coverage](https://gitlab.com/your-username/project-name/badges/master/coverage.svg)](https://gitlab.com/your-username/project-name/pipelines)
 
 ![](./data/icon.svg)
 
@@ -17,12 +15,12 @@
 <!--- protected region package header ends -->
 
 ## Description
-This project provides a high-fidelity USBL simulator written in C++ and a ROS 2 node which acts as wrapper to the simulator.
+This project provides a high-fidelity USBL simulator written in C++ and a ROS 2 node that acts as a wrapper for the simulator.
 
 The simulator implements the following **features**:
-- USBL measurement simulation in USBL-, and NED-frame
+- USBL measurement simulation in USBL-and NED-frame
 - USBL array simulation with transducer and hydrophone positions
-- Round-Trip-Time (RTT) noise and quantization simulation
+- Round-trip-time (RTT) noise and quantization simulation
 - Time-Difference-of-Arrival (TDOA) noise and quantization simulation
 - Internal Attitude and Heading Reference System (AHRS) simulation (Xsens MTi-100 Inertial Measurement Unit)
 - Acoustic path delay simulation
@@ -31,14 +29,14 @@ The simulator implements the following **features**:
 - All parameters for the USBL can be configured in a YAML file
 - All models and effects can be enabled/disabled separately
 
-An example config file for an **OEM 120/180 OEM USBL** is provided. Parameters for a **S2C R 7/17 USBL** are found in the references below. 
-For other parameters we refer to EvoLogics.
+An example config file for an OEM 120/180 OEM USBL is provided. Parameters for an S2C R 7/17 USBL are found in the references below. 
+For other parameters, we refer to EvoLogics.
 
 > **Scope and Limitations of this Simulator:**
-> - This simulator does not model the exact acoustic signal propagation and interactions with the environment. This would require a full acoustic simulation of the environment, i.e., by using ray tracing techniques.
-> - Instead the simulator propagates white noise measurements through the geometry of the USBL to provide realistic measurements under ideal (data sheet) conditions.
-> - This simulator is intended for testing and validation navigation algorithms (sensor fusion) and their real-time performance.
-> - This simulator does only simulate the localization feature of the USBL. The acoustic communication capability of EvoLogics modems is not simulated. 
+> - This simulator does not model the exact acoustic signal propagation and interactions with the environment. This would require a full acoustic simulation of the environment i.e. using ray tracing techniques.
+> - Instead, the simulator propagates white noise measurements through the geometry of the USBL to provide realistic measurements under ideal (datasheet) conditions.
+> - This simulator is intended for testing and validation of navigation algorithms (sensor fusion) and their real-time performance.
+> - This simulator only simulates the localization feature of the USBL. The acoustic communication capability of EvoLogics modems is not simulated. 
 
 ## Table of Contents
 
@@ -60,12 +58,12 @@ This project depends on the following literature and libraries:
 
 - **Eigen3**: Eigen is a C++ template library for linear algebra: [Eigen website](https://eigen.tuxfamily.org/).
 - **ROS 2 Humble**: ROS 2 is a set of software libraries and tools for building robot applications: [ROS 2 Installation page](https://docs.ros.org/en/humble/Installation.html).
-- **nanoauv_sensor_driver_interfaces**: TRIPLE-project specific ROS 2 package with nanoAUV interfaces. Not required to build the package.
+- **nanoauv_sensor_driver_interfaces**: TRIPLE-project specific ROS 2 package with nanoAUV interfaces. You don't need to build that package.
 
 
 ## ROS 2 Node Description
 
-The USBL simulator node implements several publishers, depending on the **CMake build macro** and subscribes to one topic.
+The USBL simulator node implements several publishers, depending on the **CMake build macro**, and subscribes to one topic.
 ROS 2 services or actions are not provided.
 
 ### Publishers
@@ -90,7 +88,7 @@ If the nanoAUV interface package is not used, the following publishers are avail
 | `*/pos_fix_spherical_ned_frame`   | `geometry_msgs/PointStamped.msg`   | Position vector in spherical coordinates w.r.t. NED frame.| [PointStamped.msg](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PointStamped.html) |
 | `*/pos_fix_spherical_usbl_frame`   | `geometry_msgs/PointStamped.msg`   | Position vector in spherical coordinates w.r.t. USBL frame.| [PointStamped.msg](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PointStamped.html) |
 | `*/accuracy`   | `std_msgs/Float64.msg`   | Accuracy (standard deviation) of position fix.| [Float64.msg](http://docs.ros.org/en/noetic/api/std_msgs/html/msg/Float64.html) |
-| `*/diagnostic`   | `diagnostic_msgs/DiagnosticArray.msg`   | Array with diagnostic information about state of ROS 2 node.| [DiagnosticArray.msg](http://docs.ros.org/en/melodic/api/diagnostic_msgs/html/msg/DiagnosticArray.html) |
+| `*/diagnostic`   | `diagnostic_msgs/DiagnosticArray.msg`   | Array with diagnostic information about the state of ROS 2 node.| [DiagnosticArray.msg](http://docs.ros.org/en/melodic/api/diagnostic_msgs/html/msg/DiagnosticArray.html) |
 
 ### Subscribers
 
@@ -112,7 +110,7 @@ To install the `usbl_simulator_package`, you need to follow these steps:
     sudo apt-get install libeigen3-dev
     ```
 
-2. **Install ROS 2 Humble**: Make sure you have ROS 2 (Humble) installed. You can follow the official installation instructions provided by ROS 2. Visit [ROS 2 Humble Installation page](https://docs.ros.org/en/humble/Installation.html) for detailed installation instructions tailored to your platform.
+2. **Install ROS 2 Humble**: Ensure you have ROS 2 (Humble) installed. You can follow the official installation instructions provided by ROS 2. Visit [ROS 2 Humble Installation page](https://docs.ros.org/en/humble/Installation.html) for detailed installation instructions tailored to your platform.
 
 3. **Clone the Package**: Clone the package repository to your ROS 2 workspace. If you don't have a ROS 2 workspace yet, you can create one using the following commands:
 
@@ -129,7 +127,7 @@ To install the `usbl_simulator_package`, you need to follow these steps:
 
     Replace `<repository_url>` with the URL of your package repository.
 
-4. **Build the Package**: Once the package is cloned, you need to build it using colcon, the default build system for ROS 2. Navigate to your ROS 2 workspace and run the following command:
+4. **Build the Package**: Once the package is cloned, you must build it using colcon, the default build system for ROS 2. Navigate to your ROS 2 workspace and run the following command:
 
     ```bash
     cd /path/to/ros2_workspace
@@ -146,7 +144,7 @@ To install the `usbl_simulator_package`, you need to follow these steps:
 
     Replace `/path/to/ros2_workspace` with the actual path to your ROS 2 workspace.
 
-That's it! Your `usbl_simulator_package` should now be installed along with its dependencies, and ready to use in your ROS 2 environment.
+That's it! Your `usbl_simulator_package` should now be installed along with its dependencies and ready to use in your ROS 2 environment.
 
 ## Usage
 
@@ -156,15 +154,15 @@ That's it! Your `usbl_simulator_package` should now be installed along with its 
     ```bash
     ros2 launch usbl_simulator_package usbl_simulator.launch.py
     ```
-  The USBL simulator prints your settings and now waits for a ground truth odometry message.
+  The USBL simulator prints your settings and waits for a ground truth odometry message.
 
 3. **Provide an odometry publisher** from you vehicle simulation.
 
 4. **Check ROS 2 topics** the USBL values should now be published.
 
 **Important Usage Information**:
-- The odometry message needs to be published with at least the USBL data rate/sample time.
-- The message `*/diagnostic` will show `WARN` if odometry rate is lower.
+- The odometry message must be published with at least the USBL data rate/sample time.
+- The message `*/diagnostic` will show `WARN` if the odometry rate is lower.
 - If no odometry message is published, the message `*/diagnostic` will show `STALE`.
 - If everything is correct `*/diagnostic` will show `OK`. 
 
@@ -199,29 +197,10 @@ The USBL simulator implementation follows the following publications and datashe
 - Tan, H.-P.; Diamant, R.; Seah, W. K.; Waldmeyer, M. "A Survey of Techniques and Challenges in Underwater Localization." In: *Ocean Engineering*, vol. 38, no. 14-15 (Oct. 2011), pp. 1663–1676. doi: [10.1016/j.oceaneng.2011.07.017](https://doi.org/10.1016/j.oceaneng.2011.07.017).
 - Xsens. "MTi Series: A Complete Line of MEMS Motion Trackers - IMU, VRU, AHRS and GNSS/INS." Xsens Technologies B.V.
 
-## Reports
-
-Coverage Report:
-- https://triple.glpages.informatik.uni-bremen.de/gnc/sensors/usbl-simulator/fancy_html_coverage_report/
-
-Dokumentation: (Doxygen Awesome)
-- https://triple.glpages.informatik.uni-bremen.de/gnc/sensors/usbl-simulator/doxygen_awesome/html/
-
-Documentation Coverage:
-- https://triple.glpages.informatik.uni-bremen.de/gnc/sensors/usbl-simulator/doxygen_awesome/doc-coverage/
-
-Code Climate Report:
-- https://triple.glpages.informatik.uni-bremen.de/gnc/sensors/usbl-simulator/gl-code-quality-report.html
-
-## Legacy
-
-Documentation (Doxygen Rosdoc Lite)
-- https://triple.glpages.informatik.uni-bremen.de/gnc/sensors/usbl-simulator/rosdoc_lite/html/
-
 ## Contributing
 
-If you would like to contribute to the project, see the [CONTRIBUTING](CONTRIBUTING) file for details.
+If you want to contribute to the project, see the [CONTRIBUTING](CONTRIBUTING) file for details.
 
 ## License
 
-This project is licensed under the BSD-3-Clause License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD-3-Clause License. Please take a look at the [LICENSE](LICENSE) file for details.
