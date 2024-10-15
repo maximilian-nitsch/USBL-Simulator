@@ -1,0 +1,69 @@
+# @license BSD-3 https://opensource.org/licenses/BSD-3-Clause
+# Copyright (c) 2024, Institute of Automatic Control - RWTH Aachen University
+# Maximilian Nitsch (m.nitsch@irt.rwth-aachen.de)
+# All rights reserved.
+
+usbl_simulator:
+  # ******************************************************************
+  # General Settings
+  # ******************************************************************
+  general_settings:
+    sample_time: 1.0 # (s)
+    seed: 42
+    use_constant_seed: false
+
+  # ******************************************************************
+  # Model Parameter Settings
+  # ******************************************************************
+  model_parameter_settings:
+    speed_of_sound: 1500.0 # (m/s)
+    max_operating_range: 300.0 # (m)
+    rtt_std_dev: 6.66666e-06 # (s)
+    tdoa_std_dev: 2.60296781192103e-07 # (s)
+    rtt_resolution: 1.0e-06 # (s)
+    tdoa_resolution: 1.0e-06 # (s)
+    ahrs_noise_std_dev: [0.2, 0.2, 1.0] # (deg)
+    lever_arm_body_to_transponder_frame: [0.0, 0.0, 0.0] # (m)
+    rotation_body_to_transponder_frame: [0.0, 0.0, 0.0] # RPY Euler angles in ZYX convention (deg)
+    lever_arm_body_to_usbl_centroid_frame: [0.0, 0.0, 0.0] # (m)
+    rotation_body_to_usbl_centroid_frame: [0.0, 0.0, 0.0] # RPY Euler angles in ZYX convention (deg)
+    transceiver_modem_transducer_position: [-80.0e-03, 0.0, 39.904e-03] # w.r.t. USBL centroid frame (m)
+    transceiver_hydrophone_positions: [
+        -0.022275, # X1
+        -0.022275, # Y1
+        -0.014696, # Z1
+        -0.022275, # X2
+        0.022275, # Y2
+        -0.014696, # Z2
+        0.022275, # X3
+        -0.022275, # Y3
+        -0.014696, # Z3
+        0.022275, # X4
+        0.022275, # Y4
+        -0.014696, # Z4
+        0.0, # X5
+        0.0, # Y5
+        0.058784, # Z5
+      ] # transceiver hydrophone positions w.r.t. USBL centroid frame (m)
+
+  # ******************************************************************
+  # Model Path Fix Loss Settings
+  # ******************************************************************
+  model_path_fix_loss_settings: # Parameters that model ~99% loss at 320m range
+    a: 0.0037
+    b: 0.0174
+    c: 0.0
+    d: 0.0174
+
+  # ******************************************************************
+  # Model Enable Settings
+  # ******************************************************************
+  model_enable_settings:
+    enable_rtt_noise_model: true # round trip time noise
+    enable_tdoa_noise_model: true # time difference of arrival noise
+    enable_ahrs_noise_model: true # internal AHRS noise
+    enable_rtt_quantization_model: true # round trip time quantization
+    enable_tdoa_quantization_model: true # time difference of arrival quantization
+    enable_acoustic_path_fix_delay_model: true # acoustic path fix delay due to acoustic signal propagation
+    enable_acoustic_path_fix_loss_model: true # loss of fixes due to acoustic environment
+    enable_acoustic_path_fix_outlier_model: false # fix outliers due to acoustic environment; TODO: implement
