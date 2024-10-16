@@ -72,8 +72,8 @@ This node publishes the following topics:
 
 | Topic Name       | Message Type        | Description                        | Link     |
 |------------------|---------------------|------------------------------------|----------|
-| `*/usbllong`   | `nanoauv_sensor_driver_interfaces/UsblLong.msg`   | Custom USBL Cartesian position message holding USBLLONG.| [UsblLong.msg](https://gitlab.informatik.uni-bremen.de/triple/gnc/interfaces/-/blob/b95efc88d33a9e439025056c988c6459589b86e5/nanoauv_sensor_driver_interfaces/msg/UsblLong.msg) |
-| `*/usblangles`   | `nanoauv_sensor_driver_interfaces/UsblAngles.msg`   | Custom USBL spherical position message holding USBLANGLES.| [UsblAngles.msg](https://gitlab.informatik.uni-bremen.de/triple/gnc/interfaces/-/blob/main/nanoauv_sensor_driver_interfaces/msg/UsblAngles.msg?ref_type=heads) |
+| `*/usbllong`   | `nanoauv_sensor_driver_interfaces/UsblLong.msg`   | Custom USBL Cartesian position message holding USBLLONG.| [UsblLong.msg]() |
+| `*/usblangles`   | `nanoauv_sensor_driver_interfaces/UsblAngles.msg`   | Custom USBL spherical position message holding USBLANGLES.| [UsblAngles.msg]() |
 | `*/pos_fix_cartesian_ned_frame`   | `geometry_msgs/PointStamped.msg`   | Position vector in Cartesian coordinates w.r.t. NED frame.| [PointStamped.msg](http://docs.ros.org/en/noetic/api/geometry_msgs/html/msg/PointStamped.html) |
 
 If the nanoAUV interface package is not used, the following publishers are available:
