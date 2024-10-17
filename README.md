@@ -42,6 +42,7 @@ For other parameters, we refer to EvoLogics.
 The following features are planned for **future releases**:
 - Acoustic position fix outlier simulation (i.e. due to multipath)
 - Parameter files for other EvoLogics USBL products
+- Reverse USBL (USBL array on AUV, transponder on air-water interface)
 - Double-sided USBL (USBL array on AUV and air-water interface)
 - Gazebo plugin
 
