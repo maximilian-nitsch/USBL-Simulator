@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-BSD--3-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 
-<img src="./data/icon.svg" alt="Icon" width="200">
+<img src="./data/icon.svg" alt="Icon" width="300">
 
 <!--- protected region package header begins -->
 **Author:**
