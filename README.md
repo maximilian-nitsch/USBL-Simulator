@@ -49,7 +49,7 @@ The following features are planned for **future releases**:
 ## Working Principle of USBL
 A USBL can measure the position of the AUV body frame within its sensor frame (USBL-centroid frame). It measures the RTT of an acoustic signal between the so-called transceiver (TC) and transponder (TP) modem transducers. Transducers convert electrical signals into acoustic signals and vice versa. Furthermore, measuring the TDOAs between multiple hydrophones (H) transducers, also known as USBL antenna, delivers the Angle-of-Arrival (AOA). Hence, a USBL uses the triangulation technique.
 
-![](./data/usbl-principle-sketch.pmg)
+![](./data/usbl-principle-sketch.png)
 
 The USBL is usually installed at the air-water interface (often under a ship). Depending on the use case, the USBL sends the position solution from the air-water interface to the AUV via an acoustic link. This results in an initial latency of three sound paths, which reduces to two after the acoustic link is established for communication.
 
