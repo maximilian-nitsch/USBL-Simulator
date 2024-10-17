@@ -14,18 +14,18 @@
   - Maximilian Nitsch <m.nitsch@irt.rwth-aachen.de>
 <!--- protected region package header ends -->
 
-## Description
+## Description and Features
 This project provides a high-fidelity USBL simulator written in C++ and a ROS 2 node that acts as a wrapper for the simulator.
 
 The simulator implements the following **features**:
-- USBL measurement simulation in USBL-and NED-frame
+- USBL measurement simulation in USBL-centroid and NED frame
 - USBL array simulation with transducer and hydrophone positions
+- Standard USBL configuration (USBL on air-water interface)
 - Round-trip-time (RTT) noise and quantization simulation
 - Time-Difference-of-Arrival (TDOA) noise and quantization simulation
 - Internal Attitude and Heading Reference System (AHRS) simulation (Xsens MTi-100 Inertial Measurement Unit)
 - Acoustic path delay simulation
 - Acoustic position fix loss simulation (exponential loss model)
-- Acoustic position fix outlier simulation (future release)
 - All parameters for the USBL can be configured in a YAML file
 - All models and effects can be enabled/disabled separately
 
@@ -37,6 +37,25 @@ For other parameters, we refer to EvoLogics.
 > - Instead, the simulator propagates white noise measurements through the geometry of the USBL to provide realistic measurements under ideal (datasheet) conditions.
 > - This simulator is intended for testing and validation of navigation algorithms (sensor fusion) and their real-time performance.
 > - This simulator only simulates the localization feature of the USBL. The acoustic communication capability of EvoLogics modems is not simulated. 
+
+## Future Features
+The following features are planned for **future releases**:
+- Acoustic position fix outlier simulation (i.e. due to multipath)
+- Parameter files for other EvoLogics USBL products
+- Inverse USBL (USBL array on AUV)
+- Double-sided USBL (USBL array on AUV and air-water interface)
+- Gazebo plugin
+
+## Working Principle of USBL
+A USBL can measure the position of the AUV body frame within its sensor frame (USBL-centroid frame). It measures the RTT of an acoustic signal between the so-called transceiver (TC) and transponder (TP) modem transducers. Transducers convert electrical signals into acoustic signals and vice versa. Furthermore, measuring the TDOAs between multiple hydrophones (H) transducers, also known as USBL antenna, delivers the Angle-of-Arrival (AOA). Hence, a USBL uses the triangulation technique.
+
+![](./data/usbl-principle-sketch.pmg)
+
+The USBL is usually installed at the air-water interface (often under a ship). Depending on the use case, the USBL sends the position solution from the air-water interface to the AUV via an acoustic link. This results in an initial latency of three sound paths, which reduces to two after the acoustic link is established for communication.
+
+A transponder modem is located on the AUV. It responds to the interrogation of the transceiver modem, typically installed at the air-water interface. The transponder modem is usually installed at the AUV. Consequently, the position fix is calculated on the air-water interface and then sent to the AUV via the acoustic link. 
+
+Take a look into the [References](#references) for more information.
 
 ## Table of Contents
 
@@ -96,7 +115,7 @@ This node subscribes to the following topics:
 
 | Topic Name        | Message Type        | Description                        | Link     |
 |-------------------|---------------------|------------------------------------|----------|
-| `*/odometry`| `nav_msgs/Odometry.msg`| Estimate of a position and velocity in free space.| [Odometry.msg](http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html) |
+| `*/odometry`| `nav_msgs/Odometry.msg`| Ground truth odometry of the robot.| [Odometry.msg](http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html) |
 
 
 
@@ -160,11 +179,11 @@ That's it! Your `usbl_simulator_package` should now be installed along with its 
 
 4. **Check ROS 2 topics** the USBL values should now be published.
 
-**Important Usage Information**:
-- The odometry message must be published with at least the USBL data rate/sample time.
-- The message `*/diagnostic` will show `WARN` if the odometry rate is lower.
-- If no odometry message is published, the message `*/diagnostic` will show `STALE`.
-- If everything is correct `*/diagnostic` will show `OK`. 
+> **Important Usage Information**:
+> - The odometry message must be published with at least the USBL data rate/sample time.
+> - The message `*/diagnostic` will show `WARN` if the odometry rate is lower.
+> - If no odometry message is published, the message `*/diagnostic` will show `STALE`.
+> - If everything is correct `*/diagnostic` will show `OK`. 
 
 ## Coding Guidelines
 
