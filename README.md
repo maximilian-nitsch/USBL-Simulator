@@ -20,7 +20,7 @@ This project provides a high-fidelity USBL simulator written in C++ and a ROS 2 
 The simulator implements the following **features**:
 - USBL measurement simulation in USBL-centroid and NED frame
 - USBL array simulation with transducer and hydrophone positions
-- Standard USBL configuration (USBL on air-water interface)
+- Standard and inverse USBL configuration (USBL on air-water interface, transponder on AUV)
 - Round-trip-time (RTT) noise and quantization simulation
 - Time-Difference-of-Arrival (TDOA) noise and quantization simulation
 - Internal Attitude and Heading Reference System (AHRS) simulation (Xsens MTi-100 Inertial Measurement Unit)
@@ -42,7 +42,6 @@ For other parameters, we refer to EvoLogics.
 The following features are planned for **future releases**:
 - Acoustic position fix outlier simulation (i.e. due to multipath)
 - Parameter files for other EvoLogics USBL products
-- Inverse USBL (USBL array on AUV)
 - Double-sided USBL (USBL array on AUV and air-water interface)
 - Gazebo plugin
 
