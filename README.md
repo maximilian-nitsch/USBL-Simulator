@@ -1,6 +1,11 @@
 # C++/ROS 2 Ultra-Short Baseline (USBL) Simulator
-
-[![License](https://img.shields.io/badge/license-BSD--3-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+![Build](https://github.com/maximilian-nitsch/USBL-Simulator/actions/workflows/ci.yaml/badge.svg)<!-- -->
+![License](https://img.shields.io/github/license/maximilian-nitsch/USBL-Simulator.svg)<!-- -->
+[![Last Commit](https://img.shields.io/github/last-commit/maximilian-nitsch/USBL-Simulator)](https://github.com/maximilian-nitsch/USBL-Simulator/commits/main)<!-- -->
+[![ROS2 Humble](https://img.shields.io/badge/ROS2-Humble-blue)](https://index.ros.org/doc/ros2/Installation/Humble/)<!-- -->
+[![Release](https://img.shields.io/github/v/release/maximilian-nitsch/USBL-Simulator)](https://github.com/maximilian-nitsch/USBL-Simulator/releases)<!-- -->
+[![Open Issues](https://img.shields.io/github/issues/maximilian-nitsch/USBL-Simulator)](https://github.com/maximilian-nitsch/USBL-Simulator/issues)<!-- -->
+[![Contributors](https://img.shields.io/github/contributors/maximilian-nitsch/USBL-Simulator)](https://github.com/maximilian-nitsch/USBL-Simulator/graphs/contributors)
 
 <img src="./data/icon.svg" alt="Icon" width="300">
 
