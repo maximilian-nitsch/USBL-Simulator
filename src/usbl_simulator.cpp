@@ -893,7 +893,7 @@ double UsblSimulator::calcAccuracyPositionFixCartesian(
 
   if (usblModelEnableSettings_.enable_ahrs_noise_model) {
     // Set covariance matrix for AHRS measurement
-    Eigen::Matrix3d covMatrixAhrsUsbl;
+    Eigen::Matrix3d covMatrixAhrsUsbl = Eigen::Matrix3d::Zero();
     covMatrixAhrsUsbl(0, 0) = usblSimParams_.usblAhrsNoiseStdDev(0) *
                               usblSimParams_.usblAhrsNoiseStdDev(0);
     covMatrixAhrsUsbl(1, 1) = usblSimParams_.usblAhrsNoiseStdDev(1) *

@@ -73,7 +73,7 @@ target_include_directories(${PROJECT_NAME}_node PUBLIC
         $<INSTALL_INTERFACE:include>)
 
 target_compile_features(${PROJECT_NAME}_node PUBLIC c_std_99 cxx_std_17)
- 
+
 # Add preprocessor definition for custom nanoAUV sensor driver interfaces macro if enabled
 if(ENABLE_CUSTOM_NANOAUV_INTERFACES)
         target_compile_definitions(${PROJECT_NAME}_node PRIVATE USE_NANOAUV_SENSOR_DRIVER_INTERFACES)
